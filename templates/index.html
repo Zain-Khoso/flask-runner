@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUNNER</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="scanline"></div>
+    
+    <main class="hero">
+        <nav class="status-bar">
+            <span class="status-left">VERSION: v1.0</span>
+            <span class="status-right">STATUS: ONLINE</span>
+        </nav>
+
+        <section class="game-container">
+            <div class="game-view">
+                <div class="branding">
+                    <h1 class="title">RUNNER</h1>
+                    <p class="tagline">EVADE. SURVIVE. REPEAT.</p>
+                </div>
+
+                <div class="environment">
+                    <div class="ground">
+                        <div class="player-wrapper">
+                            <img src="/static/images/player.png" class="pixel-sprite player" alt="Player">
+                        </div>
+
+                        <div class="enemy-wrapper">
+                            <img src="/static/images/snail.png" class="pixel-sprite snail" alt="Enemy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="cta-box">
+                    <a href="/download" class="btn btn-main">
+                        <span class="btn-top">DOWNLOAD .EXE</span>
+                        <span class="btn-sub">LINUX</span>
+                    </a>
+                    <a href="/leaderboard" class="btn btn-alt">LEADERBOARD</a>
+                </div>
+                
+                <div class="technologies">
+                    <div class="spec"><span>Language:</span> Python</div>
+                    <div class="spec"><span>Framework:</span> Pygame</div>
+                    <div class="spec"><span>Database:</span> MongoDB</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="input-hints">
+            <span>[SPACE] TO JUMP</span>
+            <span class="divider">|</span>
+            <span>[ESC] TO EXIT</span>
+        </footer>
+    </main>
+</body>
+</html>
