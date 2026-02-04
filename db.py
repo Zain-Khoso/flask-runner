@@ -19,7 +19,7 @@ class Database:
 
     def update_score(self, username: str, score: int):
         self.collection.update_one(
-            {"username": username}, {"$inc": {"score", score}}, upsert=True
+            {"username": username}, {"$inc": {"score": score}}, upsert=True
         )
 
     def get_top_scores(self):
