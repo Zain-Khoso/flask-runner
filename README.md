@@ -1,22 +1,14 @@
 # Runner Backend
 
-The central server for Runner. Built with Flask to manage user authentication, global leaderboards, and game distribution.
+The central server for Runner. Built with Flask to manage user global leaderboards and game distribution.
 
 ## Features
-
-- **User Auth**: Dedicated endpoints for player signup and login.
 
 - **Leaderboard API**: Securely submit and retrieve scores via MongoDB.
 
 - **Asset Hosting**: Serves the latest `.exe` build for players.
 
 ## API Endpoints
-
-**Authentication**
-
-- `POST /api/signup` — Register a new player account.
-
-- `POST /api/login` — Authenticate player from the Pygame client.
 
 **Gameplay**
 
