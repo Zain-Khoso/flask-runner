@@ -1,6 +1,5 @@
 # Imports.
 from flask import Flask, render_template, request, jsonify
-from werkzeug.security import generate_password_hash
 from db import Database
 
 # Initialization.
@@ -14,21 +13,16 @@ def landing_page():
     return render_template("index.html")
 
 
-# Endpoint - User Sign Up
-@app.route("/api/signup", methods=["POST"])
-def signup():
+# Endpoint - User score update
+@app.route("/api/add-score", methods=["POST"])
+def update_score():
     data = request.json
     username = data.get("username")
-    password = data.get("password")
+    score = data.get("score")
 
-    if not username or not password:
-        return jsonify({"error": "Username and password required"}), 400
+    if not username or not score:
+        return jsonify({"error": "Username and Score required"}), 400
 
-    if db.get_user(username):
-        return jsonify({"error": "User already exists"}), 409
+    db.update_score(username, score)
 
-    hashed_password = generate_password_hash(password)
-
-    db.set_user(username, hashed_password)
-
-    return jsonify({"message": "User created"}), 201
+    return jsonify({"message": "Score Updated"}), 201

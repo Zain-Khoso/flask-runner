@@ -17,13 +17,7 @@ class Database:
 
         self.user_collection = db["users"]
 
-    def get_user(self, username: str):
-        return self.user_collection.find_one({"username": username})
-
-    def set_user(self, username: str, password: str):
-        self.user_collection.insert_one(
-            {"username": username, "password": password, "score": 0}
-        )
-
     def update_score(self, username: str, score: int):
-        self.user_collection.update_one({"username": username}, {"$inc": {score}})
+        self.user_collection.update_one(
+            {"username": username}, {"$inc": {"score", score}}, upsert=True
+        )
