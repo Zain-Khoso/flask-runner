@@ -38,11 +38,11 @@
                 <div class="environment">
                     <div class="ground">
                         <div class="player-wrapper">
-                            <img src="/static/images/player.png" class="pixel-sprite player" alt="Player">
+                            <img src="{{ url_for('static', filename='images/player.png') }}" class="pixel-sprite player" alt="Player">
                         </div>
 
                         <div class="enemy-wrapper">
-                            <img src="/static/images/snail.png" class="pixel-sprite snail" alt="Enemy">
+                            <img src="{{ url_for('static', filename='images/snail.png') }}" class="pixel-sprite snail" alt="Enemy">
                         </div>
                     </div>
                 </div>
@@ -50,9 +50,17 @@
 
             <div class="panel">
                 <div class="cta-box">
-                    <a href="/download" class="btn btn-main">
-                        <span class="btn-top">DOWNLOAD .EXE</span>
-                        <span class="btn-sub">LINUX</span>
+                    <a href="{{ url_for('static', filename='exe/'+file_name) }}" download="{{file_name}}" class="btn btn-main">
+                        <span class="btn-top">
+                            {% if os == 'WINDOWS' %}
+                                DOWNLOAD .EXE
+                            {% elif os == 'MACOS' %}
+                                DOWNLOAD .DMG
+                            {% else %}
+                                DOWNLOAD .ZIP
+                            {% endif %}
+                        </span>
+                        <span class="btn-sub">{{ os }}</span>
                     </a>
                     <a href="/leaderboard" class="btn btn-alt">LEADERBOARD</a>
                 </div>

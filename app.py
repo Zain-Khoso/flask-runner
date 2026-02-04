@@ -10,13 +10,26 @@ db = Database()
 # Route - Landing Page
 @app.route("/")
 def landing_page():
-    return render_template("index.html")
+    platform = request.user_agent.platform
+
+    if platform == "linux":
+        os_name = "LINUX"
+        file_name = "linux_runner.zip"
+    elif platform == "macos":
+        os_name = "MACOS"
+        file_name = "macos_runner.dmg"
+    else:
+        os_name = "WINDOWS"
+        file_name = "windows_runner.exe"
+
+    return render_template("index.html", os=os_name, file_name=file_name)
 
 
 # Route - Leaderboard Page
 @app.route("/leaderboard")
 def leaderboard_page():
     records = db.get_top_scores()
+
     return render_template("leaderboard.html", players=records)
 
 
