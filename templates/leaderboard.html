@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Runner | Global Leaderboard">
+    <meta name="description" content="Check out the top-ranked players in Runner. See where you stand among the best in this retro-inspired 2D infinite runner.">
+    <meta name="keywords" content="Runner, Leaderboard, High Scores, Pygame, Pixel Art, Rankings">
+    <meta name="author" content="https://linkedin.com/in/zain-khoso/">
+    <meta name="theme-color" content="#404040"> 
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    
+    <!-- Page Title -->
+    <title>RUNNER | HALL OF FAME</title>
+
+    <!-- Assets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="scanline"></div>
+    
+    <main class="hero">
+        <nav class="status-bar">
+            <span class="status-left">DB_SYNC: SUCCESS</span>
+            <span class="status-right">LOCATION: GLOBAL_RANKINGS</span>
+        </nav>
+
+        <section class="game-container">
+            <div class="game-view leaderboard-view">
+                <div class="list-header">
+                    <h2 class="section-title">TOP RUNNERS</h2>
+                    <a href="/" class="back-btn">&cross; CLOSE</a>
+                </div>
+
+                <div class="player-list">
+                    <div class="table-head">
+                        <span>RANK</span>
+                        <span>PLAYER_ID</span>
+                        <span>TOTAL_SCORE</span>
+                    </div>
+                    
+                    <div class="scroll-area">
+                        {% for player in players %}
+                        <div class="player-row {% if loop.index == 1 %}gold{% endif %}">
+                            <span class="rank">#{{ loop.index }}</span>
+                            <span class="name">{{ player.username }}</span>
+                            <span class="score">{{ player.score }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="cta-box">
+                    <div class="stats-summary">
+                        <span class="btn-top">COMMUNITY TOTAL</span>
+                        <span class="btn-sub">XP COLLECTED BY ALL PLAYERS</span>
+                    </div>
+                </div>
+                
+                <div class="technologies">
+                    <div class="spec"><span>Language:</span> Python</div>
+                    <div class="spec"><span>Framework:</span> Pygame</div>
+                    <div class="spec"><span>Database:</span> MongoDB</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="input-hints">
+            <span>[SCROLL] TO VIEW MORE</span>
+            <span class="divider">|</span>
+            <span>[ESC] TO RETURN HOME</span>
+        </footer>
+    </main>
+</body>
+</html>

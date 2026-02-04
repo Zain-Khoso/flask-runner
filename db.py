@@ -15,9 +15,12 @@ class Database:
         client = MongoClient(MONGO_URI)
         db = client[MONGO_DATABASE]
 
-        self.user_collection = db["users"]
+        self.collection = db["users"]
 
     def update_score(self, username: str, score: int):
-        self.user_collection.update_one(
+        self.collection.update_one(
             {"username": username}, {"$inc": {"score", score}}, upsert=True
         )
+
+    def get_top_scores(self):
+        return list(self.collection.find().sort("score", -1))

@@ -13,6 +13,13 @@ def landing_page():
     return render_template("index.html")
 
 
+# Route - Leaderboard Page
+@app.route("/leaderboard")
+def leaderboard_page():
+    records = db.get_top_scores()
+    return render_template("leaderboard.html", players=records)
+
+
 # Endpoint - User score update
 @app.route("/api/add-score", methods=["POST"])
 def update_score():
