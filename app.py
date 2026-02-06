@@ -10,19 +10,7 @@ db = Database()
 # Route - Landing Page
 @app.route("/")
 def landing_page():
-    ua_string = request.headers.get("User-Agent", "").lower()
-
-    if "linux" in ua_string:
-        os_name = "LINUX"
-        file_name = "linux_runner.zip"
-    elif "macintosh" in ua_string or "mac os x" in ua_string:
-        os_name = "MACOS"
-        file_name = "macos_runner.dmg"
-    else:
-        os_name = "WINDOWS"
-        file_name = "windows_runner.exe"
-
-    return render_template("index.html", os=os_name, file_name=file_name)
+    return render_template("index.html")
 
 
 # Route - Leaderboard Page

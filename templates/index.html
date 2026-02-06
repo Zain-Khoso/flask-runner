@@ -50,17 +50,11 @@
 
             <div class="panel">
                 <div class="cta-box">
-                    <a href="{{ url_for('static', filename='exe/'+file_name) }}" download="{{file_name}}" class="btn btn-main">
+                    <a href="{{ url_for('static', filename='runner.zip') }}" download="runner.zip" class="btn btn-main">
                         <span class="btn-top">
-                            {% if os == 'WINDOWS' %}
-                                DOWNLOAD .EXE
-                            {% elif os == 'MACOS' %}
-                                DOWNLOAD .DMG
-                            {% else %}
-                                DOWNLOAD .ZIP
-                            {% endif %}
+                            DOWNLOAD .ZIP
                         </span>
-                        <span class="btn-sub">{{ os }}</span>
+                        <span class="btn-sub">LINUX ONLY</span>
                     </a>
                     <a href="/leaderboard" class="btn btn-alt">LEADERBOARD</a>
                 </div>
